@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maggon Family Foundation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f7f7f7;
+      --fg: #111111;
+      --muted: #777777;
+      --accent: #214b86;
+      --card: #ffffff;
+      --border: #e3e3e3;
+      --max-width: 1200px;
+      --radius-lg: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 32px 40px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    /* HEADER ----------------------------------------------------- */
+
+    header {
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #0a3a2a;
+      line-height: 1;
+      margin-bottom: 16px; /* 16px gap to tagline */
+    }
+
+    .brand-tagline {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c7a447;
+      line-height: 1;
+    }
+
+    /* MAIN TWO-COLUMN ------------------------------------------- */
+
+    main {
+      width: 100%;
+      max-width: var(--max-width);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    section {
+      width: 100%;
+    }
+
+    /* LEFT COLUMN (HERO + FLAGSHIP) ----------------------------- */
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-right: 12px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .headline {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .headline span {
+      color: var(--accent);
+    }
+
+    .subhead {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .hero-flagship {
+      margin-top: 24px;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px 16px;
+      border: 1px solid var(--border);
+    }
+
+    .hero-card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .card-list li {
+      font-size: 13px;
+      color: #333;
+    }
+
+    .card-list li span {
+      font-weight: 500;
+    }
+
+    /* RIGHT COLUMN (ABOUT PANEL) -------------------------------- */
+
+    .panel {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: calc(var(--radius-lg) + 4px);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .panel-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .panel-tag {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: #fafafa;
+    }
+
+    .panel-body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-body p {
+      font-size: 13px;
+      color: #444;
+    }
+
+    /* FOUNDERS INSIDE PANEL ------------------------------------- */
+
+    .founders-panel {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .founder {
+      font-size: 12px;
+    }
+
+    .founder-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .founder-role {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .founder-text {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 2px;
+    }
+
+    .founder-link {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+
+    /* CONTACT --------------------------------------------------- */
+
+    .contact-block {
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      align-items: baseline;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .contact-link {
+      font-size: 13px;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    /* LATEST NEWS ----------------------------------------------- */
+
+    .news-section {
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .news-header {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .news-eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .news-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .news-intro {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .news-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .news-date {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .news-card-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .news-body {
+      font-size: 13px;
+      color: #444;
+    }
+
+    .news-more {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* FOOTER ---------------------------------------------------- */
+
+    footer {
+      width: 100%;
+      max-width: var(--max-width);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero {
+        padding-right: 0;
+      }
+      .news-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+     <div style="display:flex;align-items:center;gap:16px;">
+    <svg width="260" height="70" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- MAGGON -->
+  <text x="30%" y="36" text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#0A3A2A"
+        letter-spacing="0.9">
+    MAGGON
+  </text>
+
+  <!-- FAMILY FOUNDATION (16px below MAGGON) -->
+  <text x="30%" y="52" text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="12"
+        fill="#C7A447"
+        letter-spacing="0.6">
+    FAMILY FOUNDATION
+  </text>
+
+</svg>
+
+
+  </div>
+    </header>
+
+    <!-- MAIN TWO-COLUMN LAYOUT -->
+    <main>
+
+      <!-- LEFT COLUMN: VISION + FLAGSHIP -->
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Our vision</div>
+          <h1 class="headline">
+            Building engineers into tomorrow’s
+            <span>innovators, leaders &amp; changemakers.</span>
+          </h1>
+        </div>
+
+        <p class="subhead">
+          The Maggon Family Foundation exists to empower the next generation of engineers—
+          not just to build technology, but to build the future. We believe engineers can
+          create extraordinary impact when equipped with technical excellence, leadership
+          capability, and real-world exposure.
+        </p>
+
+        <div class="hero-flagship">
+          <div class="hero-card">
+            <div class="hero-card-label">Flagship initiatives</div>
+            <ul class="card-list">
+              <li>
+                <span>The Maggon Family Scholarship</span> – supporting high-potential
+                undergraduate engineering students from underrepresented or financially
+                constrained backgrounds pursuing computer science and related fields.
+              </li>
+              <li>
+                <span>The Maggon Family Innovation Fellowship</span> – multi-year support
+                for graduate students advancing AI, search, information retrieval, and
+                next-generation digital experiences.
+              </li>
+              <li>
+                <span>Entrepreneurship for Engineers Leadership Program</span> – a
+                partnership with USC Viterbi’s Technology, Innovation &amp;
+                Entrepreneurship team to help engineering students learn how to build,
+                launch, and lead—with purpose.
+              </li>
+              <li>
+                <span>Industry Collaboration &amp; Mentorship</span> – capstone projects,
+                guest lectures, and real-world engineering work across AI, digital
+                experience, responsible innovation, startups, and product thinking.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: ABOUT + FOUNDERS -->
+      <section class="panel">
+
+        <div class="panel-header">
+          <div class="panel-title">About the foundation</div>
+          <div class="panel-tag">Vision · Mission</div>
+        </div>
+
+        <div class="panel-body">
+
+          <p>
+            We are immigrant engineers who built a life in the U.S. through education,
+            curiosity, and perseverance. The Maggon Family Foundation is our way of giving
+            the next generation the opportunities we received—plus the mentorship we wish
+            we had.
+          </p>
+
+          <p>
+            Our guiding belief: the world needs more engineers who can build with intention,
+            lead with clarity, and innovate with humanity. When you invest in an engineer,
+            you don’t just support one student—you support every life they will impact
+            through their work, leadership, and service.
+          </p>
+
+          <div class="founders-panel">
+            <div class="founder">
+              <div class="founder-name">Sameer Maggon</div>
+              <p class="founder-text">
+	      Founder & CEO of SearchStax and a USC Viterbi alum, with two decades of experience building large-scale search, AI, and cloud systems. As a first-generation immigrant, he is committed to expanding opportunity and mentorship for the next generation of engineers.
+	      </p>
+              <a class="founder-link"
+                 href="https://www.linkedin.com/in/maggon"
+                 target="_blank" rel="noopener noreferrer">
+                LinkedIn →
+              </a>
+            </div>
+
+            <div class="founder">
+              <div class="founder-name">Dipsy Kapoor</div>
+              <p class="founder-text">
+                VP of Engineering at SearchStax and a USC Viterbi alum, with extensive experience leading global engineering, platform reliability, and cloud infrastructure teams. She is passionate about representation and creating pathways for underrepresented students in engineering.
+              </p>
+              <a class="founder-link"
+                 href="https://www.linkedin.com/in/dipsy"
+                 target="_blank" rel="noopener noreferrer">
+                LinkedIn →
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <span class="contact-label">Interested in partnering?</span>
+            <a class="contact-link" href="mailto:maggon@gmail.com">
+              Email the Maggon Family Foundation
+            </a>
+          </div>
+
+        </div>
+      </section>
+    </main>
+    <!-- LATEST NEWS -->
+<!--
+    <section class="news-section">
+      <div class="news-header">
+        <div class="news-eyebrow">Latest news</div>
+        <div class="news-title">Updates from the foundation</div>
+      </div>
+
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="news-date">October 2025</div>
+          <div class="news-card-title">Maggon Family Scholarship launches at USC Viterbi</div>
+          <p class="news-body">
+            The foundation funds its first cohort of undergraduate engineering scholars at USC,
+            focused on first-generation and underrepresented students in computer science and
+            related fields.
+          </p>
+          <div class="news-more">Read more →</div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-date">September 2025</div>
+          <div class="news-card-title">Innovation Fellowship backs research in AI &amp; search</div>
+          <p class="news-body">
+            The Maggon Family Innovation Fellowship selects its inaugural fellows, supporting
+            graduate research at the intersection of AI, search, and digital experience.
+          </p>
+          <div class="news-more">Read more →</div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-date">August 2025</div>
+          <div class="news-card-title">Entrepreneurship for Engineers pilot announced</div>
+          <p class="news-body">
+            In collaboration with USC Viterbi’s Technology, Innovation &amp; Entrepreneurship
+            group, the foundation announces a pilot program blending engineering, product
+            thinking, and founder-style leadership.
+          </p>
+          <div class="news-more">Read more →</div>
+        </article>
+      </div>
+    </section>
+-->
+    <!-- FOOTER -->
+    <footer>
+      <span>© <span id="year"></span> Maggon Family Foundation</span>
+      <span>Privately funded · Long-term horizon</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
